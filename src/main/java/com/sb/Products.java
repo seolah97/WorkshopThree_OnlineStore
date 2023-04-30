@@ -41,10 +41,6 @@ public class Products {
 // (Optional) Create overridden toString method
     @Override
     public String toString() {
-        return "Products{" +
-                "productId=" + productId +
-                ", productName='" + productName + '\'' +
-                ", price=" + price +
-                '}';
+        return "ID: " + productId + ",  Name: " + productName + ",  Price:$" + price;
     }
 }
