@@ -20,7 +20,8 @@ public class OnlineStore {
         String input;
 
         do { // Main screen that shows user possible options and asks for input
-            System.out.println("Welcome to the Online Store! Choose an option from below: ");
+            System.out.println("Welcome to the Online Store!");
+            System.out.println("Choose an option from below- ");
             System.out.println("\t1- View Products for Purchase");
             System.out.println("\t2- View my Cart");
             System.out.println("\t3- Exit the Store");
@@ -86,8 +87,11 @@ public class OnlineStore {
 
         // Create static method called showProducts that return nothing
     public static void showProducts () {
-            // iterate through the inventory
-            // Print each product one at a time
+        // Go through inventory & print each item one at a time
+        for (Products currentProducts: inventory) {
+            System.out.println(currentProducts);
+        }
+
 
             // Initialize variable for productIdInput
             // Create do-while loop that runs unless the user enters "x"
