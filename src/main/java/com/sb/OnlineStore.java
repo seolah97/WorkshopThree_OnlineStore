@@ -88,18 +88,26 @@ public class OnlineStore {
         // Create static method called showProducts that return nothing
     public static void showProducts () {
         // Go through inventory & print each item one at a time
-        for (Products currentProducts: inventory) {
+        for(Products currentProducts: inventory) {
             System.out.println(currentProducts);
         }
+        // Initialize variable for productIdInput
+        String productIdInput;
+        // Create do-while loop that runs unless user enters "x"
+        do {
+            System.out.println("\nEnter the Item ID to add to cart OR Go back to the Main Screen with \"X\". ");
+            productIdInput = scanner.nextLine();
 
+            if(!productIdInput.equalsIgnoreCase("x")){
+                for(Products products : inventory) {
+                    if(products.getProductId().equalsIgnoreCase(productIdInput)){
+                    cart.add(products);
+                    System.out.println(products.getProductName() + " was added to your cart.");
+                    break;
+                    }
+                }
+            }
 
-            // Initialize variable for productIdInput
-            // Create do-while loop that runs unless the user enters "x"
-            // Prompt user for productIdInput or let them know that they can exit with "x"
-            // Iterate through inventory
-            // if there is a product that has a matching productIdInput
-            // add product to cart
-            // break
+        } while (!productIdInput.equalsIgnoreCase("X"));
     }
-
 }
