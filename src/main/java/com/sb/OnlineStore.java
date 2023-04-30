@@ -95,7 +95,7 @@ public class OnlineStore {
         String productIdInput;
         // Create do-while loop that runs unless user enters "x"
         do {
-            System.out.println("\nEnter the Item ID to add to cart OR Go back to the Main Screen with \"X\". ");
+            System.out.println("\nEnter a Product ID to add to cart OR Go back to the Main Screen with \"X\". ");
             productIdInput = scanner.nextLine();
 
             if(!productIdInput.equalsIgnoreCase("x")){
@@ -107,7 +107,9 @@ public class OnlineStore {
                     }
                 }
             }
-
+            /*if(productIdInput.equalsIgnoreCase(productIdInput)){
+                System.out.println("\nAdd another item to your cart or exit to the Main Screen with \"X\". ");
+            } // Try to add in as a second prompt if item is added to cart. currently shows both lines */
         } while (!productIdInput.equalsIgnoreCase("X"));
     }
 }
