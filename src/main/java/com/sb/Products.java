@@ -1,24 +1,24 @@
 package com.sb;
 
-class Products {
+public class Products {
 // Initialize product properties:
-    private int productId;
+    private String productId;
     private String productName;
     private float price;
 
 // Constructors
-    public Products(int productId, String productName, float price) {
+    public Products(String productId, String productName, float price) {
         this.productId = productId;
         this.productName = productName;
         this.price = price;
     }
 
 // Create getters and setters
-    public int getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 

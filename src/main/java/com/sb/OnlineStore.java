@@ -7,35 +7,53 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
+import static com.sb.Cart.showCart;
+
 public class OnlineStore {
     static ArrayList<Products> inventory = new ArrayList<Products>();
     static ArrayList<Products> cart = new ArrayList<Products>();
     static Scanner scanner = new Scanner(System.in);
-
-
     public static void main(String[] args) {
 
-        // Run custom static method called loadProductsFromFile
-
-        // Create main menu:
+        loadProductsFromFile();
         // Initialize variable for user input
-        // Show prompt for user showing the possible options and asking for an input
-        // Create do-while loop that runs unless the user enters "3"
-        // Create switch statement that handles cases related to each menu item
-        // Case "1": Show Products
-        // Runs custom static method called showProducts
-        // Case "2": Show Cart
-        // Runs custom static method called showCart
-        // Case "3": Exit
-        // Print message that says "Exiting"
-        // Default:
-        // Show message "Input command not found"
+        String input;
 
+        do { // Main screen that shows user possible options and asks for input
+            System.out.println("Welcome to the Online Store! Choose an option from below: ");
+            System.out.println("\t1- View Products for Purchase");
+            System.out.println("\t2- View my Cart");
+            System.out.println("\t3- Exit the Store");
+            System.out.println("Enter a Command: ");
+
+            input = scanner.nextLine();
+            // Create switch statement that handles cases related to each menu item
+            switch (input) {
+                // Case "1": Show Products
+                case "1":
+                    showProducts();
+                    break;
+                // Case "2": Show Cart
+                case "2":
+                    showCart();
+                    // Case "3": Exit
+                case "3":
+                    System.out.println("You have exited the store");
+                    break;
+                    // Default:
+                default:
+                    System.out.println("Input command not found. ");
+
+
+                    //inventory.add(currentProduct);   add later
+
+            }
+        } while (!input.equalsIgnoreCase("3"));
     }
 
     // Create static method called loadProductsFromFile that return nothing
-    static void loadProductsFromFile() {
-        try{
+    public static void loadProductsFromFile () {
+        try {
             FileReader inventoryReader = new FileReader("./src/main/java/com/sb/inventory.csv");
             BufferedReader bufferedReader = new BufferedReader(inventoryReader);
 
@@ -43,50 +61,41 @@ public class OnlineStore {
 
             while ((input = bufferedReader.readLine()) != null) {
                 //input split ||
-                String[] splitInput = input.split(Pattern.quote("|"));
+                String[] splitInput = input.split("\\|");
 
-                String id = splitInput[0];
-                String name = splitInput[1];
-                float price = Float.parseFloat(splitInput[2]);
+                // Create variables that stores each property
+                String productsIdInput = splitInput[0];
+                String productsNameInput = splitInput[1];
+                float productsPriceInput = Float.parseFloat(splitInput[2]);
+
+                // Create a variable that stores a Product instance using the data from the current line
+                Products currentProduct = new Products(productsIdInput, productsNameInput, productsPriceInput);
+                // Add the variable to the static inventory variable
+                inventory.add(currentProduct);
             }
+            // Close the scanner instance
+            bufferedReader.close();
+            // Handle catch/exception
         } catch (IOException e) {
+            System.out.println("From the catch statement");
             e.printStackTrace();
         }
-    // Create an instance of FileReader with an approximate path of "./src/main/java/com/<YourInitial>/inventory.csv"
-    // Create an instance of BufferedReader that takes in the FileInputStream instance above
-
-    // Create a while loop that iterates through each line of the file
-    // Parse/Split the line on "|" and store in variable: Hint .split("\\|");
-
-    // Create variables that stores each property
-    // int id
-    // String name
-    // float price
-
-    // Create a variable that stores a Product instance using the data from the current line
-
-    // Add the variable to the static inventory variable
-    // Close the scanner instance
-    // Handle catch/exception
-
-    // Create static method called showProducts that return nothing
-
-    // Create static method called showCart that return nothing
-    // Create sub-menu
-    // Initialize subInput variable for user input
-    // Show prompt for user showing the possible options and asking for an input
-    // Create do-while loop that runs unless the user enters "2"
-    // Create switch statement that handles cases related to each menu item
-    // Case "1": Checkout
-    // Runs custom static method called checkout
-    // Case "2": Go Back To Home Screen
-    // Print message that says "Going back to home screen"
-    // Default:
-    // Show message "Input command not found"
-
-
-
 
 
     }
+
+        // Create static method called showProducts that return nothing
+    public static void showProducts () {
+            // iterate through the inventory
+            // Print each product one at a time
+
+            // Initialize variable for productIdInput
+            // Create do-while loop that runs unless the user enters "x"
+            // Prompt user for productIdInput or let them know that they can exit with "x"
+            // Iterate through inventory
+            // if there is a product that has a matching productIdInput
+            // add product to cart
+            // break
+    }
+
 }
