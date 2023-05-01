@@ -1,6 +1,7 @@
 package com.sb;
 
 import static com.sb.OnlineStore.cart;
+import static com.sb.OnlineStore.scanner;
 
 public class Checkout {
     // Create static method called checkout that return nothing
@@ -16,14 +17,28 @@ public class Checkout {
         System.out.printf("Your Subtotal is (%d Item): $%.2f\n", cartSize, cartSum);
         // Print a message to the user to pay for the items
         System.out.println("Please pay for your purchase with cash.");
-        System.out.println("Enter the payment amount: $");
+        System.out.print("Enter the payment amount: $");
+        float paymentAmount = scanner.nextFloat();
 
         // If the amount given by the user covers the entire amount owed
-        // Print out the difference that is left over
-        // Print all the items that the user has purchased
-        // Clear the cart arraylist
-        // Return to the main menu
-        // Otherwise
-        // Let the user know that the amount given doesn't cover the full amount
+        float difference = 0;
+        if (paymentAmount >= cartSum) {
+            difference = paymentAmount - cartSum ;
+            // Print out the difference that is left over
+            System.out.printf("Purchase Successful! Your change is $%.2f\n", difference);
+            // Print all the items that the user has purchased
+            System.out.println("Items purchased:");
+            for (Products products : cart){
+                System.out.print(products.toString());
+            }
+            cart.clear(); // Clear the cart arraylist
+
+            return; // Return to the main menu
+        } else { // Otherwise
+            // Let the user know that the amount given doesn't cover the full amount
+            System.out.println("The amount provided does not cover your total cost.");
+
+        }
+        scanner.close();
     }
 }

@@ -25,7 +25,7 @@ public class OnlineStore {
             System.out.println("\t1- View Products for Purchase");
             System.out.println("\t2- View my Cart");
             System.out.println("\t3- Exit the Store");
-            System.out.println("Enter a Command: ");
+            System.out.print("Enter a Command: ");
 
             input = scanner.nextLine();
             // Create switch statement that handles cases related to each menu item

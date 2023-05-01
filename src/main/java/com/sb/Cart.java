@@ -20,7 +20,7 @@ public class Cart {
         do{ // Show prompt for user showing the possible options and asking for an input
             System.out.println("\tC :Go to Checkout");
             System.out.println("\tX :Go back to Main Screen");
-            System.out.println("Enter Command: ");
+            System.out.print("Enter Command: ");
             subInput = scanner.nextLine();
 
             // Create switch statement
