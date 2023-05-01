@@ -18,12 +18,13 @@ public class Checkout {
         // Print a message to the user to pay for the items
         System.out.println("Please pay for your purchase with cash.");
         System.out.print("Enter the payment amount: $");
+
         float paymentAmount = scanner.nextFloat();
 
         // If the amount given by the user covers the entire amount owed
         float difference = 0;
         if (paymentAmount >= cartSum) {
-            difference = paymentAmount - cartSum ;
+            difference = paymentAmount - cartSum;
             // Print out the difference that is left over
             System.out.printf("Purchase Successful! Your change is $%.2f\n", difference);
             // Print all the items that the user has purchased
@@ -37,6 +38,11 @@ public class Checkout {
         } else { // Otherwise
             // Let the user know that the amount given doesn't cover the full amount
             System.out.println("The amount provided does not cover your total cost.");
+            float amountRemaining = 0;
+            amountRemaining = paymentAmount - difference;
+            System.out.printf("The payment was not enough to cover the full amount, " +
+                    "finish paying the remaining amount of $%.2f", amountRemaining);
+
 
         }
         scanner.close();
